@@ -15,12 +15,25 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
+        
         <TextBox Name="txtEntry" Height="35"/>
-        <Button Grid.Column="1" Width="100" Name="btnAdd"    Content="Add"      HorizontalAlignment="Left" Margin="5,0,0,0" Click="Add_Click"/>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--<Rectangle Grid.Column="0" Fill="Red"/>
+            <Rectangle Grid.Column="1" Fill="Green"/>
+            <Rectangle Grid.Column="2" Fill="Blue"/>-->
+        <Button Grid.Column="0" Width="Auto" Name="btnAdd"    Content="Add"       Margin="2,2,2,2"  Click="Add_Click"/>
+        <Button Grid.Column="1" Width="Auto" Name="btnDelete" Content="Delete"    Margin="2,2,2,2" Click="btnDelete_Click"/>
+        <Button Grid.Column="2" Width="Auto" Name="btnClear"  Content="Clear"     Margin="2,2,2,2" Click="btnClear_Click"/>
+        </Grid>
+        <!--Button Grid.Column="1" Width="100" Name="btnAdd"    Content="Add"      HorizontalAlignment="Left" Margin="5,0,0,0" Click="Add_Click"/>
         <Button Grid.Column="1" Width="100" Name="btnDelete" Content="Delete"   HorizontalAlignment="Left" Margin="105,0,0,0" Click="btnDelete_Click"/>
-        <Button Grid.Column="1" Width="100" Name="btnClear"  Content="Clear"    HorizontalAlignment="Left" Margin="205,0,0,0" Click="btnClear_Click"/>
-
+        <Button Grid.Column="1" Width="100" Name="btnClear"  Content="Clear"    HorizontalAlignment="Left" Margin="205,0,0,0" Click="btnClear_Click"/>-->
+        
         <ListView Name="lvEntries" Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

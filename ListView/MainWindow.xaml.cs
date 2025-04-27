@@ -41,10 +41,7 @@ namespace ListView
 
 		private void btnDelete_Click(object sender, RoutedEventArgs e)
 		{
-			if (lvEntries.SelectedIndex==-1)
-			{
-				return;
-			}
+			if (lvEntries.SelectedIndex==-1)return;
 			lvEntries.Items.RemoveAt(lvEntries.SelectedIndex);
 		}
 	}
