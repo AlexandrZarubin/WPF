@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="CustomTextControls.View.ClearableTextBox"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:local="clr-namespace:CustomTextControls"
+                    mc:Ignorable="d"
+                    d:DesignHeight="40" d:DesignWidth="250"
+                    >
+    <Grid>
+        <TextBox Name="txtInput" FontSize="16" Height="40" Width="250"
+                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                 Background="Transparent"
+                 />
+        <TextBlock Name="tbPlaceholder" Text="Введите Ваше имя" FontSize="16" Foreground="DarkGray"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Panel.ZIndex="-1"/>
+        <Button Name="btnClear" Content="X" Width="30" Height="30" HorizontalAlignment="Right"
+                BorderThickness="0"/>
+    </Grid>
+</UserControl>

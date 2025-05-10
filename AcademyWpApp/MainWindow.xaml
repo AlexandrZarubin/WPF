@@ -1,0 +1,172 @@
+﻿<Window x:Class="AcademyWpApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AcademyWpApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        >
+    <Border BorderThickness="2" BorderBrush="DarkGray"  CornerRadius="8" Background="Indigo"  Padding="2">
+
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" Background="#FF222222" MouseLeftButtonDown="Header_MouseLeftButtonDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Заголовок -->
+            <TextBlock Text="Academy App" 
+                   VerticalAlignment="Center"
+                   Margin="10,0,0,0"
+                   FontSize="16"
+                   Foreground="White"/>
+
+            <!-- Кнопка Свернуть -->
+            <Button Content="—" Width="40" Height="40"
+                Grid.Column="1"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Click="MinimizeButton_Click"
+                Background="Transparent" BorderBrush="Transparent"
+                Foreground="White"/>
+
+            <!-- Кнопка Закрыть -->
+            <Button Content="X" Width="40" Height="40"
+                Grid.Column="2"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Click="CloseButton_Click"
+                Background="Transparent" BorderBrush="Transparent"
+                Foreground="White"/>
+        </Grid>
+
+        <!-- Рабочая область -->
+            <Grid Grid.Row="1" Background="#FF222222">
+                <Grid Background="#FF222222" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+            <!-- Выбор группы -->
+                    <ComboBox x:Name="GroupComboBox"
+                              Grid.Row="0"
+                              Width="200"
+                              Height="30"
+                              Margin="0,0,0,10"
+                              SelectionChanged="GroupComboBox_SelectionChanged"
+                              Background="#333333"
+                              Foreground="White"
+                              BorderBrush="#661A66"
+                              HorizontalAlignment="Center"
+                              BorderThickness="1">
+                        
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="#333333"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="Padding" Value="4"/>
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                        <ComboBox.Resources>
+                            <!-- Цвет текста и фона для выбранного значения -->
+                            
+                            <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#333333"/>
+                            <!--<SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="White"/>-->
+                            <!--<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#555"/>-->
+                            </ComboBox.Resources>
+                    </ComboBox>
+
+                    <!-- Таймер до следующего обновления -->
+                    <Label x:Name="UpdateTimerLabel"
+                           Grid.Row="0" Grid.Column="1"
+                           Width="200" Height="30" Margin="0,0,0,10"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Background="#333333" Foreground="White"
+                           BorderBrush="#661A66" BorderThickness="1"
+                           FontSize="14"
+                           Content="Обновление через: 00:10" />
+                    <!-- Таблица студентов -->
+                    <DataGrid x:Name="StudentsDataGrid"
+                              Grid.ColumnSpan="3"
+                              Grid.Row="1"
+                              AutoGenerateColumns="True"
+                              Background="#FF222222"
+                              Foreground="White"
+                              GridLinesVisibility="None"
+                              HeadersVisibility="Column"
+                              SelectionMode="Single"
+                              RowBackground="#FF222222"
+                              AlternatingRowBackground="#FF2E2E2E"
+                              BorderBrush="#661A66"
+                              BorderThickness="1"
+                              CanUserAddRows="False"
+                              ColumnWidth="*" >
+                                  
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#333333"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="FontSize" Value="12"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="BorderBrush" Value="#444"/>
+                                <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            </Style>
+                        </DataGrid.Resources>
+                    </DataGrid>
+
+            <!-- Выбор направления -->
+                    <ComboBox x:Name="DirectionComboBox"
+                              SelectionChanged="DirectionComboBox_SelectionChanged"
+                              Grid.Row="0"
+                              Grid.Column="2"
+                              Width="200"
+                              Height="30"
+                              Background="#333333"
+                              Foreground="White"
+                              BorderBrush="#661A66"
+                              BorderThickness="1"
+                              HorizontalAlignment="Center">
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="#333333"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="Padding" Value="4"/>
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                        <ComboBox.Resources>
+                            <!-- Цвет текста и фона для выбранного значения -->
+
+                            <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#333333"/>
+                            <!--<SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="White"/>-->
+                            <!--<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#555"/>-->
+                        </ComboBox.Resources>
+                    </ComboBox>
+                </Grid>
+            <!-- Тут твой основной контент -->
+        </Grid>
+
+
+    </Grid>
+    </Border>
+</Window>
